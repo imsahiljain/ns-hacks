@@ -47,12 +47,12 @@ function App() {
         <Route path="/student/classes" element={<StudentClasses />} />
         <Route path="/student/courses" element={<Courses />} />
         <Route
-          path="/student/class/:classID/assignments"
+          path="/student/class/:classID/:className/assignments"
           element={<StudentAssignments />}
         />
-        <Route path="/student/class/:classID/quiz" element={<StudentQuiz />} />
+        <Route path="/student/class/:classID/:className/quiz" element={<StudentQuiz />} />
         <Route
-          path="/student/class/:classID/schedule"
+          path="/student/class/:classID/:className/schedule"
           element={<StudentSchedulePage />}
         />
         <Route path="/logout" element={<LogoutPage />} />

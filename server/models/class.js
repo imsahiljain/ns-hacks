@@ -23,8 +23,14 @@ const classSchema = new mongoose.Schema({
         required:true
     },
     studentlist: {
-        type:Array,
+       name:
+       { type:Array,
         required: true
+       },
+       email:
+       { type:Array,
+        required: true
+       }
     }
 });
 

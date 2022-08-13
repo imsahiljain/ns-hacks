@@ -32,11 +32,12 @@ function CreateClass({ addTask }) {
   const toast = useToast();
   const [classID, setclassID] = useState("");
   let currentUser = Cookies.get("username");
-
+  let currentEmail = Cookies.get("email");
   const handleSubmit =async () =>{
     await Axios.patch("http://localhost:5000/api/class/enrollclass", {
       classId: classID,
-      currentUser: currentUser
+      currentUser: currentUser,
+      currentEmail:currentEmail
     })
       .then((res) => {
         toast({

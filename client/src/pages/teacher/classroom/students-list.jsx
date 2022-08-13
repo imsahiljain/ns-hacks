@@ -33,8 +33,7 @@ export default function StudentList() {
   const [studentList, setStudentList] = useState([]);
 
   const retrieveUserList = async () => {
-    await Axios.post("http://localhost:5000/api/singleclass/getclasstudents", {
-      classId: classID,
+   await Axios.get(`http://localhost:5000/api/singleclass/teacher/getclasstudents/?classId=${classID}`, {
     })
       .then((res) => {
         setStudentList(res.data);
@@ -43,7 +42,7 @@ export default function StudentList() {
         console.log(`Error message ${err}`);
       });
   };
-  useEffect(async () => {
+  useEffect(() => {
     if (userAuthenticated != "teacher") {
       toast({
         title: "Unallowed to access page!",
@@ -130,6 +129,7 @@ export default function StudentList() {
           // opacity={task.check == true ? "0.2" : "1"}
           // mb="10px"
           >
+           
             <Link
               // to={`/teacher/class/${task.body[1]}/${task.body[0]}/students`}
               textDecoration="none"
@@ -152,20 +152,26 @@ export default function StudentList() {
                 flexDirection="column"
               >
                 {/* <Icon as={link.icon} fontSize="3xl" className="active-icon" /> */}
+               
                 <Flex flexDirection="row" alignItems="center">
                   <Avatar size="lg" name="john doe" />
+                  {studentList.map((student) => {
+                  let i = 0;
                   <Flex flexDirection="column" ml="5">
                     <Text className="active" fontSize="xl">
-                      Class name: <b>sasas</b>
+                      Student name: <b>{student.name[i]}</b>
                     </Text>
                     <Text className="active" fontSize="xl">
-                      Class code: <b>sss</b>
+                      Student email: <b>{student.email[i]}</b>
                     </Text>
                   </Flex>
+                     i++;
+                    })};
                 </Flex>
               </Flex>
             </Link>
           </HStack>
+           
         </VStack>
       </Flex>
 

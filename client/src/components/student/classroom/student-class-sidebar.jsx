@@ -79,7 +79,7 @@ export default function StudentClassSidebar(props) {
             letterSpacing="tight"
             fontFamily="Europa-Bold"
           >
-            Your Class
+            {className} Class
           </Heading>
           {/* <Text
             fontSize="lg"
@@ -103,7 +103,7 @@ export default function StudentClassSidebar(props) {
             {/* Link Items */}
 
             {LinkItems.map((link) => (
-              <NavLink to={`/student/class/${classID}${link.href}`}>
+              <NavLink to={`/student/class/${classID}/${className}${link.href}`}>
                 <Flex
                   id={link.id}
                   gridGap={3}

@@ -18,7 +18,7 @@ router.post('/createclass', async (req, res) => {
         return;
     }
     else {
-        let newClass = new classcreation({ classname : className, classid :classId, teacher:currentUser, schedule:classSchedule, studentlist: [] });
+        let newClass = new classcreation({ classname : className, classid :classId, teacher:currentUser, schedule:classSchedule, studentlist: {name:[],email:[]} });
         //saving to database
         newClass = await newClass.save();
         //redirecting back to home page
@@ -30,6 +30,7 @@ router.post('/createclass', async (req, res) => {
 router.patch('/enrollclass', async (req, res) => {
     const classId = req.body.classId;
     const currentUser = req.body.currentUser;
+    const currentEmail = req.body.currentEmail;
     if (classId == "" || currentUser == ""){
         res.send( JSON.stringify({ url: "", toaststatus:"error", additional: "Some info are missing!" }));
         return;
@@ -39,9 +40,14 @@ router.patch('/enrollclass', async (req, res) => {
         res.send( JSON.stringify({ url: "",toaststatus:"warning", additional: "Class ID is incorrect!" }));
         return;
     }
+    else if (checkIfExist.studentlist.email.includes(currentEmail)){
+        res.send( JSON.stringify({  url:`/student/class/${classId}/${checkIfExist.classname}/assignments`,toaststatus:"success", additional:"Rejoined class!"}));
+        return;
+    }
     else {
-        checkIfExist.studentlist += currentUser;
-        checkIfExist.save();
+        const updater = await classcreation.findOneAndUpdate(
+            {classid:classId},
+            { studentlist: {name :[...checkIfExist.studentlist.name,currentUser], email :[...checkIfExist.studentlist.email,currentEmail]}});
         res.send( JSON.stringify({  url:`/student/class/${classId}/${checkIfExist.classname}/assignments`,toaststatus:"success", additional:"Enrolled in class!"}));
         return;
         }

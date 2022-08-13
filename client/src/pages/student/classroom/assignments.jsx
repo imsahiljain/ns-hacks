@@ -18,6 +18,21 @@ export default function StudentAssignments() {
     classID,
     className,
   };
+  
+  const [studentList, setStudentList] = useState([]);
+  const [teacher, setTeacher] = useState("");
+  
+  const getStudentsAndTeacherList = () => {
+    await Axios.get(`http://localhost:5000/api/singleclass/student/getclasstudents/?classId=${classID}`, {
+    })
+      .then((res) => {
+        setStudentList(res.data.students);
+        setStudentList(res.data.teacher);
+      })
+      .catch((err) => {
+        console.log(`Error message ${err}`);
+      });
+  }
 
   useEffect(() => {
     if (userAuthenticated != "student"){
@@ -29,6 +44,9 @@ export default function StudentAssignments() {
         isClosable: true,
       });
       navigate("/");
+    }
+    else {
+      getStudentsAndTeacherList();
     }
   },[]);
   const handleRedirection = () => {
