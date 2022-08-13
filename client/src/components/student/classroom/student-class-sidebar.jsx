@@ -25,6 +25,12 @@ import ProfileCard from "../../profile-card";
 
 const LinkItems = [
   {
+    id: 4,
+    name: "Student Info",
+    icon: MdOutlineQuestionAnswer,
+    href: "/info",
+  },
+  {
     id: 1,
     name: "Assignments",
     icon: MdOutlineAssignment,
@@ -35,12 +41,6 @@ const LinkItems = [
     name: "Quiz",
     href: "/quiz",
     icon: MdOutlineQuiz,
-  },
-  {
-    id: 4,
-    name: "Chat",
-    icon: MdOutlineQuestionAnswer,
-    href: "/chat",
   },
   {
     id: 5,
