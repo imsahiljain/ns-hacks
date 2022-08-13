@@ -6,9 +6,9 @@ const router = express.Router();
 router.post('/createclass', async (req, res) => {
     const className = req.body.className;
     const classId = req.body.classId;
-    const classSchedule = req.body.classSchedule;
+    const classSchedule = "01/01/2022";
     const currentUser = req.body.currentUser;
-    if (className == "" || classId == "" || classSchedule == "" ||currentUser == ""){
+    if (className == "" || classId == "" || currentUser == ""){
         res.send( JSON.stringify({ url: "", toaststatus:"error", additional: "Please fill all info!" }));
         return;
     }
@@ -42,7 +42,7 @@ router.patch('/enrollclass', async (req, res) => {
     else {
         checkIfExist.studentlist += currentUser;
         checkIfExist.save();
-        res.send( JSON.stringify({  url:`/student/class/${classId}/assignments`,toaststatus:"success", additional:"Enrolled in class!"}));
+        res.send( JSON.stringify({  url:`/student/class/${classId}/${checkIfExist.classname}/assignments`,toaststatus:"success", additional:"Enrolled in class!"}));
         return;
         }
 });
