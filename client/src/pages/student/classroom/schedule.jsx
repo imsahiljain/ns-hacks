@@ -1,5 +1,5 @@
 import React,{useEffect} from "react";
-import { Flex, Heading, Text, Icon, Button } from "@chakra-ui/react";
+import { Flex, Heading, Text, Icon, Button,useToast } from "@chakra-ui/react";
 import { MdOutlineLogout } from "react-icons/md";
 import StudentClassSidebar from "../../../components/student/classroom/student-class-sidebar";
 import { useLocation, useParams,useNavigate } from "react-router-dom";
@@ -11,18 +11,26 @@ export default function StudentSchedulePage() {
   let userName = Cookies.get("username");
   let userType = Cookies.get("usertype");
   let currUser = Cookies.get("username");
+  let navigate = useNavigate();
+  let toast = useToast();
+  let userAuthenticated = Cookies.get("usertype");
   const { classID, className } = useParams();
   const classInfo = {
     classID,
     className,
   };
-  let userAuthenticated = Cookies.get("usertype");
   useEffect(() => {
     if (userAuthenticated != "student"){
+      toast({
+        title: "Unallowed to access page!",
+        position: "bottom",
+        status: "error",
+        duration: 2000,
+        isClosable: true,
+      });
       navigate("/");
     }
   },[]);
-  let navigate = useNavigate();
   const handleRedirection = () => {
     navigate(`/student/classes`);
   };

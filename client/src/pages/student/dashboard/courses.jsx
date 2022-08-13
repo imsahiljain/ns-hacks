@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Flex, Heading, Text, Icon, Button } from "@chakra-ui/react";
+import { Flex, Heading, Text, Icon, Button,useToast } from "@chakra-ui/react";
 import { MdOutlineLogout } from "react-icons/md";
 // import Sidebar from "../../components/sidebar";
 // import ClassLayout from "../../components/classes/todo";
@@ -12,9 +12,17 @@ import CoursesList from "../../../components/student/dashboard/coursesList";
 export default function Courses() {
   let currUser = Cookies.get("username");
   let userAuthenticated = Cookies.get("usertype");
+  let toast = useToast();
   let navigate = useNavigate();
   useEffect(() => {
     if (userAuthenticated != "student") {
+      toast({
+        title: "Unallowed to access page!",
+        position: "bottom",
+        status: "error",
+        duration: 2000,
+        isClosable: true,
+      });
       navigate("/");
     }
   }, []);

@@ -60,7 +60,6 @@ function CreateClass({ addTask }) {
     await Axios.post("http://localhost:5000/api/class/createclass", {
       className: className,
       classId: classID,
-      classSchedule: "12/12/2022",
       currentUser: currentUser,
     })
       .then((res) => {
