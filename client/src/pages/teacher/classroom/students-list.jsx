@@ -9,7 +9,8 @@ import {
   HStack,
   Link,
   Avatar,
-  useToast
+  useToast,
+  Grid,
 } from "@chakra-ui/react";
 import { MdOutlineLogout } from "react-icons/md";
 import ClassSidebar from "../../../components/teacher/classroom/class-sidebar";
@@ -33,8 +34,10 @@ export default function StudentList() {
   const [studentList, setStudentList] = useState([]);
 
   const retrieveUserList = async () => {
-   await Axios.get(`http://localhost:5000/api/singleclass/teacher/getclasstudents/?classId=${classID}`, {
-    })
+    await Axios.get(
+      `http://localhost:5000/api/singleclass/teacher/getclasstudents/?classId=${classID}`,
+      {}
+    )
       .then((res) => {
         setStudentList(res.data);
       })
@@ -59,6 +62,17 @@ export default function StudentList() {
   const handleRedirection = () => {
     navigate(`/teacher/classes`);
   };
+  // console.log("studentlist", studentList);
+  const list = Object.values(studentList);
+  const number = list[0].length;
+
+  const mainList = [];
+  for (let i = 0; i < number; i++) {
+    mainList.push({
+      name: list[0][i],
+      email: list[1][i],
+    });
+  }
 
   return (
     <Flex
@@ -124,54 +138,50 @@ export default function StudentList() {
           </Heading>
           {/* {console.log("all classes", allclasses)} */}
           {/* Students list */}
-          <HStack
-          // key={task.id}
-          // opacity={task.check == true ? "0.2" : "1"}
-          // mb="10px"
-          >
-           
-            <Link
-              // to={`/teacher/class/${task.body[1]}/${task.body[0]}/students`}
-              textDecoration="none"
-              _hover={{ textDecoration: "none" }}
-              color="#2e2e2e"
-            >
-              <Flex
-                // id={task.id}
-                gridGap={2}
-                as="a"
-                align="left"
-                w="400px"
-                rounded="md"
-                py={3}
-                px={5}
-                mr="10"
-                // mx={7}
-                mb="5"
-                bgColor="#ededed"
-                flexDirection="column"
-              >
-                {/* <Icon as={link.icon} fontSize="3xl" className="active-icon" /> */}
-               
-                <Flex flexDirection="row" alignItems="center">
-                  <Avatar size="lg" name="john doe" />
-                  {studentList.map((student) => {
-                  let i = 0;
-                  <Flex flexDirection="column" ml="5">
-                    <Text className="active" fontSize="xl">
-                      Student name: <b>{student.name[i]}</b>
-                    </Text>
-                    <Text className="active" fontSize="xl">
-                      Student email: <b>{student.email[i]}</b>
-                    </Text>
+          <Grid templateColumns="repeat(2, 1fr)" gap={2} mt="100px">
+            {mainList.map((student) => {
+              return (
+                <Link
+                  // to={`/teacher/class/${task.body[1]}/${task.body[0]}/students`}
+                  textDecoration="none"
+                  _hover={{ textDecoration: "none" }}
+                  color="#2e2e2e"
+                >
+                  <Flex
+                    // id={task.id}
+                    gridGap={2}
+                    as="a"
+                    align="left"
+                    w="500px"
+                    h="130px"
+                    alignItems="left"
+                    justifyItems="center"
+                    my="auto"
+                    rounded="md"
+                    py={3}
+                    px={5}
+                    mr="10"
+                    // mx={7}
+                    mb="5"
+                    bgColor="#ededed"
+                    flexDirection="column"
+                  >
+                    <Flex flexDirection="row" alignItems="center">
+                      <Avatar size="lg" name={student.name} />
+                      <Flex flexDirection="column" ml="5">
+                        <Text className="active" fontSize="xl">
+                          Student name: <b>{student.name}</b>
+                        </Text>
+                        <Text className="active" fontSize="xl">
+                          Student email: <b>{student.email}</b>
+                        </Text>
+                      </Flex>
+                    </Flex>
                   </Flex>
-                     i++;
-                    })};
-                </Flex>
-              </Flex>
-            </Link>
-          </HStack>
-           
+                </Link>
+              );
+            })}
+          </Grid>
         </VStack>
       </Flex>
 

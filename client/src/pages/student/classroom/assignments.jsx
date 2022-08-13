@@ -1,10 +1,10 @@
-import React,{useEffect} from "react";
-import { Flex, Heading, Text, Icon, Button,useToast } from "@chakra-ui/react";
+import React, { useEffect, useState } from "react";
+import { Flex, Heading, Text, Icon, Button, useToast } from "@chakra-ui/react";
 import { MdOutlineLogout } from "react-icons/md";
 import StudentClassSidebar from "../../../components/student/classroom/student-class-sidebar";
-import { useLocation, useParams,useNavigate } from "react-router-dom";
+import { useLocation, useParams, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
-
+import Axios from "axios";
 export default function StudentAssignments() {
   let currUser = Cookies.get("username") || "Teacher";
   let userEmail = Cookies.get("email");
@@ -18,13 +18,15 @@ export default function StudentAssignments() {
     classID,
     className,
   };
-  
+
   const [studentList, setStudentList] = useState([]);
   const [teacher, setTeacher] = useState("");
-  
-  const getStudentsAndTeacherList = () => {
-    await Axios.get(`http://localhost:5000/api/singleclass/student/getclasstudents/?classId=${classID}`, {
-    })
+
+  const getStudentsAndTeacherList = async () => {
+    await Axios.get(
+      `http://localhost:5000/api/singleclass/student/getclasstudents/?classId=${classID}`,
+      {}
+    )
       .then((res) => {
         setStudentList(res.data.students);
         setStudentList(res.data.teacher);
@@ -32,10 +34,10 @@ export default function StudentAssignments() {
       .catch((err) => {
         console.log(`Error message ${err}`);
       });
-  }
+  };
 
   useEffect(() => {
-    if (userAuthenticated != "student"){
+    if (userAuthenticated != "student") {
       toast({
         title: "Unallowed to access page!",
         position: "bottom",
@@ -44,11 +46,10 @@ export default function StudentAssignments() {
         isClosable: true,
       });
       navigate("/");
-    }
-    else {
+    } else {
       getStudentsAndTeacherList();
     }
-  },[]);
+  }, []);
   const handleRedirection = () => {
     navigate(`/student/classes`);
   };
