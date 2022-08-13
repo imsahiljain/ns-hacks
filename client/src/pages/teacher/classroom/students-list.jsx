@@ -9,6 +9,7 @@ import {
   HStack,
   Link,
   Avatar,
+  useToast
 } from "@chakra-ui/react";
 import { MdOutlineLogout } from "react-icons/md";
 import ClassSidebar from "../../../components/teacher/classroom/class-sidebar";
@@ -21,6 +22,9 @@ export default function StudentList() {
   let userEmail = Cookies.get("email");
   let userName = Cookies.get("username");
   let userType = Cookies.get("usertype");
+  let navigate = useNavigate();
+  let userAuthenticated = Cookies.get("usertype");
+  let toast = useToast();
   const { classID, className } = useParams();
   const classInfo = {
     classID,
@@ -39,16 +43,20 @@ export default function StudentList() {
         console.log(`Error message ${err}`);
       });
   };
-  let userAuthenticated = Cookies.get("usertype");
   useEffect(async () => {
     if (userAuthenticated != "teacher") {
+      toast({
+        title: "Unallowed to access page!",
+        position: "bottom",
+        status: "error",
+        duration: 2000,
+        isClosable: true,
+      });
       navigate("/");
     } else {
       retrieveUserList();
     }
   }, []);
-
-  let navigate = useNavigate();
   const handleRedirection = () => {
     navigate(`/teacher/classes`);
   };

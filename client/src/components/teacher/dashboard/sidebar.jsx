@@ -1,5 +1,5 @@
 import React, {useEffect} from "react";
-import { Flex, Heading, Avatar, Text, Icon, Box } from "@chakra-ui/react";
+import { Flex, Heading, Avatar, Text, Icon, Box, useToast } from "@chakra-ui/react";
 import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import {
@@ -49,8 +49,16 @@ export default function Sidebar(props) {
   let currUser = Cookies.get("username");
   let userAuthenticated = Cookies.get("usertype");
   let navigate = useNavigate();
+  let toast = useToast();
   useEffect(() => {
     if (userAuthenticated != "teacher"){
+      toast({
+        title: "Unallowed to access page!",
+        position: "bottom",
+        status: "error",
+        duration: 2000,
+        isClosable: true,
+      });
           navigate("/");
     }
    
