@@ -1,16 +1,13 @@
 import React, { useState } from "react";
 import {
   Flex,
-  Heading,
   Text,
-  Icon,
   Button,
   Avatar,
   Drawer,
   DrawerBody,
   DrawerFooter,
   DrawerHeader,
-  Box,
   DrawerOverlay,
   DrawerContent,
   DrawerCloseButton,
@@ -19,14 +16,11 @@ import {
   FormLabel,
   Input,
   InputGroup,
-  HStack,
   InputRightElement,
   Stack,
   VStack,
   Divider,
-  propNames,
 } from "@chakra-ui/react";
-import { MdOutlineLogout } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 
@@ -60,7 +54,6 @@ export default function ProfileCard(props) {
       px={5}
       bgColor={props.bg}
       ref={btnRef}
-      //   colorScheme="teal"
       cursor="pointer"
       onClick={onOpen}
     >
@@ -68,9 +61,6 @@ export default function ProfileCard(props) {
       <Text textAlign="center" fontSize="xl" mx="4">
         {userName}
       </Text>
-      {/* <Button ref={btnRef} colorScheme="teal" onClick={onOpen}>
-        Open
-      </Button> */}
       <Drawer
         isOpen={isOpen}
         placement="right"
@@ -90,14 +80,6 @@ export default function ProfileCard(props) {
               <Avatar my={2} name={currUser} size="2xl" />
               <Flex align={"center"} justify={"center"}>
                 <Stack spacing={4} mx={"auto"} w="260px" maxW={"xl"} py={12}>
-                  {/* <Box
-                    rounded={"lg"}
-                    backdropFilter="blur(18px) brightness(1.3) "
-                    border="2px solid #363636"
-                    boxShadow={"lg"}
-                    p={8}
-                    w="460px"
-                  > */}
                   <Stack spacing={4}>
                     <FormControl id="name" isRequired>
                       <FormLabel color="#efefef">Name</FormLabel>
@@ -151,7 +133,6 @@ export default function ProfileCard(props) {
             <Button
               onClick={onClose}
               bgColor="#363636"
-              // colorScheme="gray"
               color="#e6e6e6"
               _focus={{ bgColor: "#363636" }}
               _hover={{ bgColor: "#363636" }}

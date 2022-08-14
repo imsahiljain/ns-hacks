@@ -1,14 +1,8 @@
-import React, {useEffect} from "react";
-import { Flex, Heading, Avatar, Text, Icon, Box, useToast } from "@chakra-ui/react";
+import React, { useEffect } from "react";
+import { Flex, Heading, Text, Icon, useToast } from "@chakra-ui/react";
 import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import {
-  MdWeb,
-  MdTask,
-  MdOutlineClass,
-  MdPeopleOutline,
-  MdOutlineVideoCameraFront,
-} from "react-icons/md";
+import { MdWeb, MdTask, MdOutlineClass, MdPeopleOutline } from "react-icons/md";
 import Cookies from "js-cookie";
 import ProfileCard from "../../profile-card";
 
@@ -37,12 +31,6 @@ const LinkItems = [
     icon: MdPeopleOutline,
     href: "/students",
   },
-  {
-    id: 5,
-    name: "Meetings",
-    icon: MdOutlineVideoCameraFront,
-    href: "/meetings",
-  },
 ];
 
 export default function Sidebar(props) {
@@ -51,7 +39,7 @@ export default function Sidebar(props) {
   let navigate = useNavigate();
   let toast = useToast();
   useEffect(() => {
-    if (userAuthenticated != "teacher"){
+    if (userAuthenticated != "teacher") {
       toast({
         title: "Unallowed to access page!",
         position: "bottom",
@@ -59,10 +47,9 @@ export default function Sidebar(props) {
         duration: 2000,
         isClosable: true,
       });
-          navigate("/");
+      navigate("/");
     }
-   
-  },[]);
+  }, []);
   return (
     // Main area
 
@@ -81,7 +68,7 @@ export default function Sidebar(props) {
             letterSpacing="tight"
             fontFamily="Europa-Bold"
           >
-            Teachit
+            learnr.
           </Heading>
           <Text
             fontSize="lg"
@@ -128,28 +115,6 @@ export default function Sidebar(props) {
             ))}
           </Flex>
         </Flex>
-
-        {/* Profile */}
-
-        {/* <Flex
-          flexDir="row"
-          alignItems="center"
-          mb={10}
-          mt={5}
-          mx="7"
-          as="a"
-          align="center"
-          w="80%"
-          rounded="md"
-          py={1}
-          px={5}
-          bgColor="#333333"
-        >
-          <Avatar my={2} src="https://bit.ly/dan-abramov" />
-          <Text textAlign="center" fontSize="xl" mx="9">
-          {currUser}
-          </Text>
-        </Flex> */}
         <ProfileCard bg="#333333" color="#e4e4e4" />
       </Flex>
     </Flex>

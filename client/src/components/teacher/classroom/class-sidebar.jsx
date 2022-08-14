@@ -1,24 +1,10 @@
 import { React } from "react";
+import { Flex, Heading, Text, Icon, useToast, Button } from "@chakra-ui/react";
+import { NavLink, useParams } from "react-router-dom";
 import {
-  Flex,
-  Heading,
-  Avatar,
-  Text,
-  Icon,
-  useToast,
-  Box,
-  Button,
-} from "@chakra-ui/react";
-import { NavLink, useParams, useLocation } from "react-router-dom";
-import {
-  MdWeb,
-  MdTask,
-  MdOutlineClass,
   MdPeopleOutline,
   MdOutlineVideoCameraFront,
   MdOutlineAssignment,
-  MdOutlineQuiz,
-  MdOutlineQuestionAnswer,
   MdDateRange,
 } from "react-icons/md";
 import ProfileCard from "../../profile-card";
@@ -36,12 +22,6 @@ const LinkItems = [
     icon: MdOutlineAssignment,
     href: "/assignments",
   },
-  // {
-  //   id: 3,
-  //   name: "Chat",
-  //   icon: MdOutlineQuestionAnswer,
-  //   href: "/students",
-  // },
   {
     id: 4,
     name: "Meetings",
@@ -73,7 +53,6 @@ export default function ClassSidebar(props) {
 
       console.log(classID);
     } catch (err) {
-      // toast.error("Could not copy the Room ID");
       console.error(err);
     }
   }
@@ -99,19 +78,6 @@ export default function ClassSidebar(props) {
           >
             {className} Class
           </Heading>
-          {/* <Text
-            fontSize="lg"
-            fontFamily="Europa-Reg"
-            mx={10}
-            mb="20"
-            color="#919191"
-            alignItems="center"
-          >
-            Dashboard for{" "}
-            <Flex display="inline-flex" fontWeight="bold">
-              {props.dashFor}
-            </Flex>
-          </Text> */}
           <Flex
             flexDir={["row", "row", "column", "column", "column"]}
             align={["center", "center", "center", "flex-start", "flex-start"]}

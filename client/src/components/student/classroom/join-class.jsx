@@ -4,26 +4,12 @@ import { useNavigate } from "react-router-dom";
 import {
   Button,
   Heading,
-  HStack,
   Input,
   useToast,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
-  ModalCloseButton,
-  FormControl,
-  FormLabel,
-  Input as ChakraInput,
-  useDisclosure,
   VStack,
   Wrap,
   WrapItem,
 } from "@chakra-ui/react";
-import { nanoid } from "nanoid";
-import { v4 as uuidv4 } from "uuid";
 import Cookies from "js-cookie";
 import Axios from "axios";
 
@@ -59,13 +45,6 @@ function CreateClass({ addTask }) {
           isClosable: true,
         });
       });
-
-    // navigate(`/student/class/${classID}/assignments`, {
-    //   state: {
-    //     // className,
-    //     classID,
-    //   },
-    // });
   };
 
   return (
@@ -77,7 +56,6 @@ function CreateClass({ addTask }) {
         letterSpacing="tight"
         fontFamily="Europa-Reg"
         fontSize="3xl"
-        // alignItems="left"
         textAlign="left"
         color="#e6e6e6"
       >
@@ -85,18 +63,6 @@ function CreateClass({ addTask }) {
       </Heading>
 
       <VStack mt="4" pb="7" w="50%" pr="100px">
-        {/* <Input
-          h="50px"
-          bgColor="#1d1d1d"
-          variant="filled"
-          placeholder="Class Name"
-          fontSize="lg"
-          value={className}
-          onChange={(e) => setclassName(e.target.value)}
-          // mr="10px"
-          _focus={{ borderColor: "#4a4a4a" }}
-          isRequired
-        /> */}
         <Input
           h="50px"
           variant="filled"
@@ -104,7 +70,6 @@ function CreateClass({ addTask }) {
           fontSize="lg"
           value={classID}
           onChange={(e) => setclassID(e.target.value)}
-          // mr="10px"
           bgColor="#1d1d1d"
           color="#e6e6e6"
           _placeholder={{ color: "#4f4f4f" }}
@@ -113,18 +78,6 @@ function CreateClass({ addTask }) {
           _active={{ bgColor: "#212121" }}
           isRequired
         />
-        {/* <Input
-            h="50px"
-            variant="filled"
-            placeholder="Enter meeting link"
-            fontSize="lg"
-            type="link"
-            value={meetLink}
-            onChange={(e) => setmeetLink(e.target.value)}
-            // mr="10px"
-            _focus={{ borderColor: "#4a4a4a" }}
-            isRequired
-          /> */}
       </VStack>
 
       <Wrap spacing={4}>

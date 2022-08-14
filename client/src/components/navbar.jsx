@@ -11,8 +11,8 @@ export default function Navbar() {
       h="10vh"
       w="100vw"
     >
-      <Text fontWeight={500} fontSize="3xl" color="#efefef">
-        Teachit
+      <Text fontFamily="Europa-Bold" fontSize="3xl" color="#efefef">
+        learnr.
       </Text>
       <Flex fontWeight={500} fontSize="sm" gridGap={10}>
         <Link to="/">

@@ -4,7 +4,7 @@ import TeacherClasses from "./pages/teacher/dashboard/classes";
 import TeacherWebsite from "./pages/teacher/dashboard/website";
 import TeacherStudents from "./pages/teacher/dashboard/students";
 import TeacherTasks from "./pages/teacher/dashboard/tasks";
-import TeacherMeetings from "./pages/teacher/dashboard/meetings";
+import TeacherMeetings from "./pages/teacher/classroom/meetings";
 import LoginPage from "./pages/login";
 import RegisterPage from "./pages/register";
 import LogoutPage from "./pages/logout";
@@ -41,6 +41,10 @@ function App() {
         <Route
           path="/teacher/class/:classID/:className/schedule"
           element={<TeacherSchedulePage />}
+        />
+        <Route
+          path="/teacher/class/:classID/:className/meetings"
+          element={<TeacherMeetings />}
         />
         <Route
           path="/teacher/class/:classID/:className/assignments"

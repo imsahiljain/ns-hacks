@@ -108,12 +108,6 @@ const getAssignements = async () => {
           mt="7"
         >
           <Heading
-            // fontWeight="normal"
-            // letterSpacing="tight"
-            // fontFamily="Europa-Bold"
-            // fontSize="4xl"
-            // alignItems="center"
-            // color="#e6e6e6"
             mt="5"
             mb="5"
             // mt="100px"

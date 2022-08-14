@@ -1,4 +1,4 @@
-import { VStack, useToast, HStack } from "@chakra-ui/react";
+import { useToast, HStack } from "@chakra-ui/react";
 import TaskList from "./tasks";
 import AddTask from "./AddTask";
 import { useState, useEffect } from "react";
@@ -18,10 +18,6 @@ function Todo() {
       return task.id !== id;
     });
     setTasks(newTasks);
-  }
-
-  function deleteTaskAll() {
-    setTasks([]);
   }
 
   function checkTask(id) {
@@ -81,7 +77,6 @@ function Todo() {
         tasks={tasks}
         updateTask={updateTask}
         deleteTask={deleteTask}
-        // deleteTaskAll={deleteTaskAll}
         checkTask={checkTask}
       />
     </HStack>

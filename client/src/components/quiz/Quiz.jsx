@@ -58,7 +58,6 @@ function Quiz() {
         fontFamily="Europa-Bold"
         fontSize="2xl"
         mt="4"
-        // pt="10"
         alignItems="center"
         color="#404040"
       >
