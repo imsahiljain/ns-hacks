@@ -26,6 +26,7 @@ export default function StudentList() {
   let navigate = useNavigate();
   let userAuthenticated = Cookies.get("usertype");
   let toast = useToast();
+  // const [mainList, setMainList] = useState([]);
   const { classID, className } = useParams();
   const classInfo = {
     classID,
@@ -39,12 +40,17 @@ export default function StudentList() {
       {}
     )
       .then((res) => {
-        setStudentList(res.data);
+        const { name } = res.data;
+        console.log(name);
+        // setStudentList((prevValue) => prevValue.concat([name[0]]));
+        // setStudentList(name);
+        setStudentList((prevValue) => prevValue.concat(name));
       })
       .catch((err) => {
         console.log(`Error message ${err}`);
       });
   };
+
   useEffect(() => {
     if (userAuthenticated != "teacher") {
       toast({
@@ -59,20 +65,10 @@ export default function StudentList() {
       retrieveUserList();
     }
   }, []);
+
   const handleRedirection = () => {
     navigate(`/teacher/classes`);
   };
-  // console.log("studentlist", studentList);
-  const list = Object.values(studentList);
-  const number = list[0].length;
-
-  const mainList = [];
-  for (let i = 0; i < number; i++) {
-    mainList.push({
-      name: list[0][i],
-      email: list[1][i],
-    });
-  }
 
   return (
     <Flex
@@ -138,8 +134,8 @@ export default function StudentList() {
           </Heading>
           {/* {console.log("all classes", allclasses)} */}
           {/* Students list */}
-          <Grid templateColumns="repeat(2, 1fr)" gap={2} mt="100px">
-            {mainList.map((student) => {
+          <Grid templateColumns="repeat(3, 1fr)" gap={2} mt="100px">
+            {studentList.map((student) => {
               return (
                 <Link
                   // to={`/teacher/class/${task.body[1]}/${task.body[0]}/students`}
@@ -152,8 +148,8 @@ export default function StudentList() {
                     gridGap={2}
                     as="a"
                     align="left"
-                    w="500px"
-                    h="130px"
+                    w="400px"
+                    h="100px"
                     alignItems="left"
                     justifyItems="center"
                     my="auto"
@@ -167,14 +163,14 @@ export default function StudentList() {
                     flexDirection="column"
                   >
                     <Flex flexDirection="row" alignItems="center">
-                      <Avatar size="lg" name={student.name} />
+                      <Avatar size="lg" name={student} />
                       <Flex flexDirection="column" ml="5">
                         <Text className="active" fontSize="xl">
-                          Student name: <b>{student.name}</b>
+                          Student name: <b>{student}</b>
                         </Text>
-                        <Text className="active" fontSize="xl">
+                        {/* <Text className="active" fontSize="xl">
                           Student email: <b>{student.email}</b>
-                        </Text>
+                        </Text> */}
                       </Flex>
                     </Flex>
                   </Flex>
