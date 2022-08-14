@@ -36,6 +36,20 @@ export default function StudentAssignments() {
     classID,
     className,
   };
+ const [assignementList,setAssignementList] = useState([]);
+
+const getAssignements = async () => {
+  await Axios.get(
+    `http://localhost:5000/api/assignement/getassignements/?classId=${classID}`,
+    {
+    }).then((res) => {
+      setAssignementList(res.data.additional);
+    })
+    .catch((err) => {
+      console.log(`Error message ${err}`);
+    });
+}
+
 
   useEffect(() => {
     if (userAuthenticated != "student") {
@@ -47,6 +61,9 @@ export default function StudentAssignments() {
         isClosable: true,
       });
       navigate("/");
+    }
+    else {
+      getAssignements();
     }
   }, []);
   const handleRedirection = () => {
@@ -111,6 +128,9 @@ export default function StudentAssignments() {
           >
             All Assignments
           </Heading>
+          {assignementList.map((assignement) => {
+              return (
+                <>
           <Flex
             onClick={onOpen}
             gridGap={2}
@@ -129,22 +149,21 @@ export default function StudentAssignments() {
           >
             {/* <Icon as={link.icon} fontSize="3xl" className="active-icon" /> */}
             <Text className="active" fontSize="xl">
-              Assignment name:
+              Assignment name: {assignement.assignementname}
             </Text>
             <Text className="active" fontSize="xl">
-              Posted on: {new Date().toLocaleDateString()}
+              Posted on: {assignement.assignementpostdate}
             </Text>
             <Button colorScheme="green" variant="solid" size="lg" mt="5">
               <Text fontSize="lg">View assignment</Text>
             </Button>
           </Flex>
-
           <Modal isCentered isOpen={isOpen} onClose={onClose}>
             <ModalOverlay />
             <ModalContent w="90%" bgColor="#212121" color="#e4e4e4">
-              <ModalHeader>Assignment name here</ModalHeader>
+              <ModalHeader>{assignement.assignementname}</ModalHeader>
               <ModalBody>
-                <Text>assignment description here</Text>
+                <Text>{assignement.assignementdescription}</Text>
               </ModalBody>
               <ModalFooter>
                 <Button colorScheme="blue" onClick={onClose}>
@@ -153,6 +172,9 @@ export default function StudentAssignments() {
               </ModalFooter>
             </ModalContent>
           </Modal>
+         </>
+              );
+            })}
         </VStack>
       </Flex>
 

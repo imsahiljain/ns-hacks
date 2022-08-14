@@ -35,6 +35,34 @@ export default function TeacherAssignments() {
     className,
   };
   const [studentList, setStudentList] = useState([]);
+  const [assignementName,setAssignementName] = useState("");
+  const [assignementDescription,setAssignementDescription] = useState("");
+
+
+  const addAssignement = async () => {
+    await Axios.post(
+      `http://localhost:5000/api/assignement/createassignement`,
+      {
+        classID:classID,
+        className:className,
+        currentUser:userName,
+        assignementName:assignementName,
+        assignementDescription:assignementDescription,
+      }).then((res) => {
+        toast({
+          title: res.data.additional,
+          position: "bottom",
+          status: res.data.status,
+          duration: 2000,
+          isClosable: true,
+        });
+        navigate(res.url);
+      })
+      .catch((err) => {
+        console.log(`Error message ${err}`);
+      });
+
+  }
 
   const retrieveUserList = async () => {
     await Axios.get(
@@ -133,6 +161,9 @@ export default function TeacherAssignments() {
             _placeholder={{ opacity: 0.7, color: "#9c9c9c" }}
             color="#2e2e2e"
             size="lg"
+            onChange={(e) => {
+              setAssignementName(e.target.value);
+            }}
           />
 
           <Textarea
@@ -142,9 +173,12 @@ export default function TeacherAssignments() {
             color="#2e2e2e"
             size="lg"
             mb="7"
+            onChange={(e) => {
+              setAssignementDescription(e.target.value);
+            }}
             // size="sm"
           />
-          <Button colorScheme="green" variant="solid" mt="8" mb="5" size="md">
+          <Button colorScheme="green" variant="solid" mt="8" mb="5" size="md" onClick={() => addAssignement()}>
             Create Assignment
           </Button>
         </VStack>
