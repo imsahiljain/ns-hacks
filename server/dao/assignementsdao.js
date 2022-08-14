@@ -4,48 +4,43 @@ const router = express.Router();
 
 //POST REQUEST
 router.post('/createassignement', async (req, res) => {
-    const classId = req.body.classId;
-    const className = req.body.className;
+    const classID = req.body.classID;
     const assignementName = req.body.assignementName;
+    const assignementClassName = req.body.className
     const assignementTeacher = req.body.currentUser;
-    const assignementInfo = req.body.assignementInfo;
-    if (classId == "" || assignementName == "" || assignementTeacher == "" || assignementInfo == "" || assignementTeacher == ""){
-        res.send( JSON.stringify({ url: "", toaststatus:"error", additional: "Crucial info missing!" }));
+    const assignementDescription = req.body.assignementDescription;
+    let dateObj = new Date();
+    let month = dateObj.getUTCMonth() + 1;
+    let day = dateObj.getUTCDate();
+    let year = dateObj.getUTCFullYear();
+    const assignementPostDate = year + "/" + month + "/" + day;
+    if (classID == "" || assignementName == "" || assignementTeacher == "" || assignementDescription == "" || assignementTeacher == ""){
+        res.send( JSON.stringify({url: `/teacher/class/${classID}/${assignementClassName}/assignments` ,toaststatus:"error", additional: "Crucial info missing!" }));
         return;
     }
     else {
         let newAssignement = new assignementModel({
-            assignementclassid: classId,
+            assignementclassid: classID,
             assignementname: assignementName,
+            assignementclassname: assignementClassName,
+            assignementpostdate:assignementPostDate,
             assignementteacher: assignementTeacher,
-            assignementinfo: assignementInfo,
+            assignementdescription: assignementDescription,
             assignementtudentlist: {name:[],email:[],completed:[]}});
         //saving to database
         newAssignement = await newAssignement.save();
         //redirecting back to home page
-        res.send( JSON.stringify({  url:`/teacher/class/${classId}/${className}/students`,toaststatus:"success", additional:"Assignement added!"}));
+        res.send( JSON.stringify({url: `/teacher/class/${classID}/${assignementClassName}/assignments` ,toaststatus:"success", additional:"Assignement added!"}));
         return;
         }
 });
 
 router.get('/getassignements', async (req, res) => {    
-    const assignementStudent = req.query.studentName;
-    if (assignementStudent == ""){
-        res.send( JSON.stringify({ url: "", toaststatus:"error", additional: "Crucial info missing!" }));
-        return;
-    }
-    else {
-        const getAssignementsList = await assignementModel.find({assignementstudentlist:{name :assignementStudent}});
-        
-        console.log(getAssignementsList);
-        if (!getAssignementsList){
-            res.send( JSON.stringify({  url:`/student/classes`, additional:"No Assignements!"}));
-        }
-        else {
-            res.send( JSON.stringify({  url:`/student/classes`, additional:getAssignementsList}));
-        }
-        return;
-        }
+    const assignementClassId = req.query.classId;
+    const getAssignementsList = await assignementModel.find({assignementclassid: assignementClassId});
+    console.log(getAssignementsList);
+    res.send( JSON.stringify({ additional:getAssignementsList}));
+    return;
 });
 
 module.exports = router;

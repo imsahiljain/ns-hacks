@@ -10,11 +10,19 @@ const assignementSchema = new mongoose.Schema({
         type:String,
         required:true
     },
+    assignementpostdate:{
+        type:String,
+        required:true
+    },
+    assignementclassname:{
+        type:String,
+        required:true
+    },
     assignementteacher:{
         type:String,
         required:true
     },
-    assignementinfo:{
+    assignementdescription:{
         type:String,
         required:true
     },

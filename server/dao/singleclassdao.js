@@ -6,9 +6,9 @@ const router = express.Router();
 router.get('/teacher/getclasstudents', async (req, res) => {
     const classId = req.query.classId;
     const usersList = await classcreation.findOne({classid:classId});
+    if (usersList){
     res.send( JSON.stringify(usersList.studentlist));
-    console.log(classId);
-    console.log(usersList.studentlist);
+    }
     return;
 });
 
