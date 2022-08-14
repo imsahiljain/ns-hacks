@@ -178,7 +178,22 @@ export default function TeacherAssignments() {
             }}
             // size="sm"
           />
+<<<<<<< HEAD
           <Button colorScheme="green" variant="solid" mt="8" mb="5" size="md" onClick={() => addAssignement()}>
+=======
+          <Button
+            bg={"green.500"}
+            color={"white"}
+            _hover={{
+              bg: "green.600",
+            }}
+            _active={{ bg: "green.600" }}
+            variant="solid"
+            mt="8"
+            mb="5"
+            size="md"
+          >
+>>>>>>> 32c39fdac4256947827decd6ddc9ae9870ddcb29
             Create Assignment
           </Button>
         </VStack>

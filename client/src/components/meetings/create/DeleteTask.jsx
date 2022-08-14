@@ -51,19 +51,26 @@ function DeleteTask({ task, deleteTask }) {
 
   return (
     <>
-      <IconButton icon={<FiTrash2 />} size="lg" onClick={onOpen} />
+      <IconButton
+        icon={<FiTrash2 />}
+        size="lg"
+        onClick={onOpen}
+        bgColor="#414141"
+        color="#e4e4e4"
+        _hover={{
+          bg: "#414141",
+        }}
+        _active={{ bg: "#414141" }}
+      />
 
       <Modal isCentered isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
-        <ModalContent w="90%" bgColor="#212121">
+        <ModalContent w="90%" bgColor="#212121" color="#e4e4e4">
           <ModalHeader>Are you sure you want to delete this tasks?</ModalHeader>
           <ModalBody>
             <Text>{task.body}</Text>
           </ModalBody>
           <ModalFooter>
-            <Button mr={3} onClick={onClose}>
-              No
-            </Button>
             <Button
               colorScheme="blue"
               onClick={() => deleteTask(task.id, onClose)}

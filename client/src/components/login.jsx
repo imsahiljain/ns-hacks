@@ -65,6 +65,9 @@ export default function Login() {
               <FormLabel color="#efefef">Email address</FormLabel>
               <Input
                 type="email"
+                borderColor="#363636"
+                _hover={{ borderColor: "#363636" }}
+                _active={{ borderColor: "#363636  " }}
                 className="loginEmail"
                 color="#efefef"
                 onChange={(e) => {
@@ -77,6 +80,9 @@ export default function Login() {
               <InputGroup>
                 <Input
                   type="password"
+                  borderColor="#363636"
+                  _hover={{ borderColor: "#363636" }}
+                  _active={{ borderColor: "#363636  " }}
                   className="loginPassword"
                   color="#efefef"
                   onChange={(e) => {
@@ -91,11 +97,12 @@ export default function Login() {
                 onClick={() => sendAuthentication()}
                 loadingText="Submitting"
                 size="lg"
-                bg={"blue.400"}
+                bg={"blue.500"}
                 color={"white"}
                 _hover={{
-                  bg: "blue.500",
+                  bg: "blue.600",
                 }}
+                _active={{ bg: "blue.600" }}
               >
                 Sign in
               </Button>

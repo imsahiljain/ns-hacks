@@ -1,5 +1,5 @@
-import React, {useEffect} from "react";
-import { Flex, Heading, Text, Icon, Button, useToast} from "@chakra-ui/react";
+import React, { useEffect } from "react";
+import { Flex, Heading, Text, Icon, Button, useToast } from "@chakra-ui/react";
 import { MdOutlineLogout } from "react-icons/md";
 // import Sidebar from "../../components/sidebar";
 // import ClassLayout from "../../components/classes/todo";
@@ -14,17 +14,17 @@ export default function StudentClasses() {
   let navigate = useNavigate();
   let toast = useToast();
   useEffect(() => {
-      if (userAuthenticated != "student"){
-        toast({
-          title: "Unallowed to access page!",
-          position: "bottom",
-          status: "error",
-          duration: 2000,
-          isClosable: true,
-        });
-        navigate("/");
-      }
-    },[]);
+    if (userAuthenticated != "student") {
+      toast({
+        title: "Unallowed to access page!",
+        position: "bottom",
+        status: "error",
+        duration: 2000,
+        isClosable: true,
+      });
+      navigate("/");
+    }
+  }, []);
   const handleLogout = () => {
     navigate(`/logout`);
   };
@@ -60,7 +60,7 @@ export default function StudentClasses() {
         >
           Welcome back,{" "}
           <Flex display="inline-flex" fontWeight="bold">
-          {currUser}
+            {currUser}
           </Flex>
         </Heading>
 
@@ -79,7 +79,11 @@ export default function StudentClasses() {
       >
         <Flex alignContent="center">
           <Button
-            colorScheme="gray"
+            bgColor="#262626"
+            // colorScheme="gray"
+            color="#e6e6e6"
+            _focus={{ bgColor: "#363636" }}
+            _hover={{ bgColor: "#363636" }}
             size="lg"
             p="5"
             onClick={() => handleLogout()}

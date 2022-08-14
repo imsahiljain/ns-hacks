@@ -24,8 +24,8 @@ import {
 } from "@chakra-ui/react";
 import { nanoid } from "nanoid";
 import { v4 as uuidv4 } from "uuid";
-import Cookies from 'js-cookie';
-import Axios from 'axios';
+import Cookies from "js-cookie";
+import Axios from "axios";
 
 function CreateClass({ addTask }) {
   const navigate = useNavigate();
@@ -33,11 +33,11 @@ function CreateClass({ addTask }) {
   const [classID, setclassID] = useState("");
   let currentUser = Cookies.get("username");
   let currentEmail = Cookies.get("email");
-  const handleSubmit =async () =>{
+  const handleSubmit = async () => {
     await Axios.patch("http://localhost:5000/api/class/enrollclass", {
       classId: classID,
       currentUser: currentUser,
-      currentEmail:currentEmail
+      currentEmail: currentEmail,
     })
       .then((res) => {
         toast({
@@ -59,14 +59,14 @@ function CreateClass({ addTask }) {
           isClosable: true,
         });
       });
-   
+
     // navigate(`/student/class/${classID}/assignments`, {
     //   state: {
     //     // className,
     //     classID,
     //   },
     // });
-  }
+  };
 
   return (
     <>
@@ -105,7 +105,12 @@ function CreateClass({ addTask }) {
           value={classID}
           onChange={(e) => setclassID(e.target.value)}
           // mr="10px"
-          _focus={{ borderColor: "#4a4a4a" }}
+          bgColor="#1d1d1d"
+          color="#e6e6e6"
+          _placeholder={{ color: "#4f4f4f" }}
+          _focus={{ bgColor: "#212121" }}
+          _hover={{ bgColor: "#212121" }}
+          _active={{ bgColor: "#212121" }}
           isRequired
         />
         {/* <Input
@@ -125,13 +130,18 @@ function CreateClass({ addTask }) {
       <Wrap spacing={4}>
         <WrapItem>
           <Button
-            colorScheme="blue"
             px="8"
             h="44px"
             type="submit"
             alignItems="center"
             mb="10"
             onClick={handleSubmit}
+            bg={"blue.500"}
+            color={"white"}
+            _hover={{
+              bg: "blue.600",
+            }}
+            _active={{ bg: "blue.600" }}
           >
             Join Class
           </Button>

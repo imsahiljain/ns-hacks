@@ -8,7 +8,7 @@ const Page404 = () => {
     <>
       <Box
         h="100vh"
-        bgImage="url(/bg.svg)"
+        bgImage="url(/bg1.svg)"
         bgPosition="center"
         bgSize="cover"
         w="full"

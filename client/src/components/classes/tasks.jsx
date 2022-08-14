@@ -79,6 +79,7 @@ function TaskList({ allclasses, updateTask, deleteTask, checkTask }) {
                 // mx={7}
                 mb="5"
                 bgColor="#333333"
+                color="#e4e4e4"
                 flexDirection="column"
               >
                 {/* <Icon as={link.icon} fontSize="3xl" className="active-icon" /> */}

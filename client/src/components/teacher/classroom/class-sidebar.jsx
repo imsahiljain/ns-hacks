@@ -36,12 +36,12 @@ const LinkItems = [
     icon: MdOutlineAssignment,
     href: "/assignments",
   },
-  {
-    id: 3,
-    name: "Chat",
-    icon: MdOutlineQuestionAnswer,
-    href: "/students",
-  },
+  // {
+  //   id: 3,
+  //   name: "Chat",
+  //   icon: MdOutlineQuestionAnswer,
+  //   href: "/students",
+  // },
   {
     id: 4,
     name: "Meetings",

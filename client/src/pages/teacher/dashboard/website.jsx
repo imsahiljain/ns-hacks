@@ -343,37 +343,55 @@ export default function TeacherWebsite() {
             />
           </div>
         </Flex>
-        <Button w="20%" mt="10" onClick={onOpen}>
+        <Button
+          w="20%"
+          mt="10"
+          onClick={onOpen}
+          bgColor="#363636"
+          // colorScheme="gray"
+          color="#e6e6e6"
+          _focus={{ bgColor: "#363636" }}
+          _hover={{ bgColor: "#363636" }}
+        >
           Publish the website
         </Button>
         <Modal isCentered isOpen={isOpen} onClose={onClose}>
           <ModalOverlay />
-          <ModalContent w="90%" bgColor="#212121">
-            <ModalHeader>Publish the website</ModalHeader>
+          <ModalContent w="90%" bgColor="#212121" color="#e4e4e4">
+            <ModalHeader mt="4">Publish the website</ModalHeader>
             <ModalBody>
               <VStack mt="4" pb="7" w="100%">
                 <Input
                   h="50px"
                   bgColor="#1d1d1d"
+                  color="#e6e6e6"
+                  _placeholder={{ color: "#4f4f4f" }}
+                  _focus={{ bgColor: "#1d1d1d" }}
+                  _hover={{ bgColor: "#1d1d1d" }}
+                  _active={{ bgColor: "#1d1d1d" }}
                   variant="filled"
                   placeholder="Website Name"
                   fontSize="lg"
                   value={websiteName}
                   onChange={(e) => setwebsiteName(e.target.value)}
                   // mr="10px"
-                  _focus={{ borderColor: "#4a4a4a" }}
+
                   isRequired
                 />
                 <Input
                   h="50px"
-                  bgColor="#1d1d1d"
                   variant="filled"
                   placeholder="Website ID"
                   fontSize="lg"
                   value={websiteID}
                   onChange={(e) => setwebsiteID(e.target.value)}
                   // mr="10px"
-                  _focus={{ borderColor: "#4a4a4a" }}
+                  bgColor="#1d1d1d"
+                  color="#e6e6e6"
+                  _placeholder={{ color: "#4f4f4f" }}
+                  _focus={{ bgColor: "#1d1d1d" }}
+                  _hover={{ bgColor: "#1d1d1d" }}
+                  _active={{ bgColor: "#1d1d1d" }}
                   isRequired
                 />
                 {/* <Input
@@ -393,7 +411,12 @@ export default function TeacherWebsite() {
               <Wrap spacing={4}>
                 <WrapItem>
                   <Button
-                    colorScheme="blue"
+                    bg={"blue.500"}
+                    color={"white"}
+                    _hover={{
+                      bg: "blue.600",
+                    }}
+                    _active={{ bg: "blue.600" }}
                     px="8"
                     h="44px"
                     type="submit"
@@ -406,7 +429,12 @@ export default function TeacherWebsite() {
                 </WrapItem>
                 <WrapItem>
                   <Button
-                    colorScheme="red"
+                    bg={"red.500"}
+                    color={"white"}
+                    _hover={{
+                      bg: "red.600",
+                    }}
+                    _active={{ bg: "red.600" }}
                     px="8"
                     h="44px"
                     alignItems="center"
@@ -433,7 +461,15 @@ export default function TeacherWebsite() {
         overflow="auto"
       >
         <Flex alignContent="center">
-          <Button colorScheme="gray" size="lg" p="5">
+          <Button
+            bgColor="#262626"
+            // colorScheme="gray"
+            color="#e6e6e6"
+            _focus={{ bgColor: "#363636" }}
+            _hover={{ bgColor: "#363636" }}
+            size="lg"
+            p="5"
+          >
             <Icon
               as={MdOutlineLogout}
               fontSize="3xl"

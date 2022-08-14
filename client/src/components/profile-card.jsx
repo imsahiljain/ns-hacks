@@ -79,10 +79,10 @@ export default function ProfileCard(props) {
       >
         <DrawerOverlay />
         <DrawerContent bgColor="#212121">
-          <DrawerCloseButton />
-          <DrawerHeader mt="10" fontSize="2xl">
+          <DrawerCloseButton color="#e4e4e4" />
+          <DrawerHeader mt="10" fontSize="2xl" color="#e2e2e2">
             Your Profile
-            <Divider mt="4" />
+            <Divider mt="4" color="#343434" />
           </DrawerHeader>
 
           <DrawerBody>
@@ -148,7 +148,14 @@ export default function ProfileCard(props) {
           </DrawerBody>
 
           <DrawerFooter>
-            <Button onClick={onClose} colorScheme="gray">
+            <Button
+              onClick={onClose}
+              bgColor="#363636"
+              // colorScheme="gray"
+              color="#e6e6e6"
+              _focus={{ bgColor: "#363636" }}
+              _hover={{ bgColor: "#363636" }}
+            >
               Cancel
             </Button>
           </DrawerFooter>
