@@ -15,9 +15,7 @@ router.get('/teacher/getclasstudents', async (req, res) => {
 router.get('/student/getclasstudents', async (req, res) => {
     const classId = req.query.classId;
     const usersList = await classcreation.findOne({classid:classId});
-    res.send( JSON.stringify({students: usersList.studentlist, teacher: usersList.teacher}));
-    console.log(classId);
-    console.log(usersList.studentlist);
+    res.send( JSON.stringify({studentnames: usersList.studentlist.name, teacher: usersList.teacher}));
     return;
 });
 module.exports = router;

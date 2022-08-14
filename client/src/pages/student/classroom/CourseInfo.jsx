@@ -28,8 +28,8 @@ export default function CourseInfo() {
   };
 
   let userAuthenticated = Cookies.get("usertype");
-  const [studentList, setStudentList] = useState([]);
-  const [teacherList, setTeacherList] = useState("");
+  const [studentNameList, setStudentNameList] = useState([]);
+  const [teacher, setTeacher] = useState("");
 
   const getStudentsAndTeacherList = async () => {
     await Axios.get(
@@ -37,8 +37,8 @@ export default function CourseInfo() {
       {}
     )
       .then((res) => {
-        setStudentList(res.data.students);
-        setTeacherList(res.data.teacher);
+        setStudentNameList(res.data.studentnames);
+        setTeacher(res.data.teacher);
         console.log(res.data.teacher);
       })
       .catch((err) => {
@@ -64,8 +64,7 @@ export default function CourseInfo() {
   const handleRedirection = () => {
     navigate(`/student/classes`);
   };
-  console.log(studentList);
-  console.log(teacherList);
+  console.log(teacher);
   return (
     <Flex
       h={[null, null, "100vh"]}
@@ -129,29 +128,61 @@ export default function CourseInfo() {
           >
             Teacher Details
           </Heading>
-          <Text>teacher details here</Text>
+          <Flex
+            gridGap={2}
+            as="a"
+            align="center"
+            w="500px"
+            rounded="md"
+            py={3}
+            px={5}
+            mr="10"
+            // mx={7}
+            mb="5"
+            bgColor="green.500"
+            color="#ffffff"
+            flexDirection="column"
+            cursor="pointer"
+          >
+          <Text>{teacher}</Text>
+          </Flex>
           <Heading
-            // fontWeight="normal"
-            // letterSpacing="tight"
-            // fontFamily="Europa-Bold"
-            // fontSize="4xl"
-            // alignItems="center"
-            // color="#e6e6e6"
             mt="5"
             mb="5"
-            // mt="100px"
-            // mb="4"
             fontWeight="normal"
             letterSpacing="tight"
             fontFamily="Europa-Reg"
             fontSize="3xl"
-            // alignItems="left"
             textAlign="left"
             color="#2e2e2e"
           >
+           
             All students enrolled
           </Heading>
-          <Text>student details here</Text>
+          {console.log(studentNameList)}
+          {studentNameList.map((studentname) => {
+            return (
+              <Flex
+            gridGap={2}
+            as="a"
+            align="center"
+            w="250px"
+            rounded="md"
+            py={3}
+            px={5}
+            mr="10"
+            // mx={7}
+            mb="5"
+            bgColor="#e4e4e4"
+            color="#141414"
+            flexDirection="column"
+            cursor="pointer"
+          >
+          <Text>{studentname}</Text>
+          </Flex>
+            );
+        } )}
+        
         </VStack>
       </Flex>
 
