@@ -127,8 +127,31 @@ export default function CourseInfo() {
             textAlign="left"
             color="#2e2e2e"
           >
-            Class Details
+            Teacher Details
           </Heading>
+          <Text>teacher details here</Text>
+          <Heading
+            // fontWeight="normal"
+            // letterSpacing="tight"
+            // fontFamily="Europa-Bold"
+            // fontSize="4xl"
+            // alignItems="center"
+            // color="#e6e6e6"
+            mt="5"
+            mb="5"
+            // mt="100px"
+            // mb="4"
+            fontWeight="normal"
+            letterSpacing="tight"
+            fontFamily="Europa-Reg"
+            fontSize="3xl"
+            // alignItems="left"
+            textAlign="left"
+            color="#2e2e2e"
+          >
+            All students enrolled
+          </Heading>
+          <Text>student details here</Text>
         </VStack>
       </Flex>
 
