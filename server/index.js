@@ -17,6 +17,7 @@ const login = require("./dao/logindao");
 const register = require("./dao/registerdao");
 const classhandling = require("./dao/classcreationdao");
 const singleclasshandling = require("./dao/singleclassdao");
+const assignementcreation = require("./dao/assignementsdao")
 const logout = require("./dao/logoutdao");
 //reading port from .env file, or set default port
 const currentport = process.env.PORT || 5000;
@@ -65,7 +66,7 @@ app.use("/api/register",register);
 app.use("/api/logout",logout);
 app.use("/api/class",classhandling);
 app.use("/api/singleclass",singleclasshandling);
-
+app.use("/api/assignement",assignementcreation);
 
 /*
  *setting port for our backend to run on
