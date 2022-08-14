@@ -34,7 +34,7 @@ const LinkItems = [
     id: 2,
     name: "Assignments",
     icon: MdOutlineAssignment,
-    href: "/website",
+    href: "/assignments",
   },
   {
     id: 3,

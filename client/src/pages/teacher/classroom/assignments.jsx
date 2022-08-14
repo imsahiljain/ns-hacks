@@ -1,44 +1,60 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import {
   Flex,
   Heading,
   Text,
   Icon,
   Button,
-  useToast,
   VStack,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
-  useDisclosure,
-  Box,
+  HStack,
+  Link,
+  Avatar,
+  useToast,
+  Grid,
+  Input,
+  Textarea,
 } from "@chakra-ui/react";
 import { MdOutlineLogout } from "react-icons/md";
-import StudentClassSidebar from "../../../components/student/classroom/student-class-sidebar";
+import ClassSidebar from "../../../components/teacher/classroom/class-sidebar";
 import { useLocation, useParams, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import Axios from "axios";
+import { useState } from "react";
 
-export default function StudentAssignments() {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  let currUser = Cookies.get("username") || "Teacher";
+export default function TeacherAssignments() {
   let userEmail = Cookies.get("email");
   let userName = Cookies.get("username");
   let userType = Cookies.get("usertype");
-  let toast = useToast();
   let navigate = useNavigate();
   let userAuthenticated = Cookies.get("usertype");
+  let toast = useToast();
+  // const [mainList, setMainList] = useState([]);
   const { classID, className } = useParams();
   const classInfo = {
     classID,
     className,
   };
+  const [studentList, setStudentList] = useState([]);
+
+  const retrieveUserList = async () => {
+    await Axios.get(
+      `http://localhost:5000/api/singleclass/teacher/getclasstudents/?classId=${classID}`,
+      {}
+    )
+      .then((res) => {
+        const { name } = res.data;
+        console.log(name);
+        // setStudentList((prevValue) => prevValue.concat([name[0]]));
+        // setStudentList(name);
+        setStudentList((prevValue) => prevValue.concat(name));
+      })
+      .catch((err) => {
+        console.log(`Error message ${err}`);
+      });
+  };
 
   useEffect(() => {
-    if (userAuthenticated != "student") {
+    if (userAuthenticated != "teacher") {
       toast({
         title: "Unallowed to access page!",
         position: "bottom",
@@ -47,11 +63,15 @@ export default function StudentAssignments() {
         isClosable: true,
       });
       navigate("/");
+    } else {
+      retrieveUserList();
     }
   }, []);
+
   const handleRedirection = () => {
-    navigate(`/student/classes`);
+    navigate(`/teacher/classes`);
   };
+
   return (
     <Flex
       h={[null, null, "100vh"]}
@@ -61,7 +81,7 @@ export default function StudentAssignments() {
     >
       {/* Column 1 */}
 
-      <StudentClassSidebar classID="students" />
+      <ClassSidebar classID="students" />
 
       {/* Column 2 */}
       <Flex
@@ -79,7 +99,7 @@ export default function StudentAssignments() {
           fontFamily="Europa-Bold"
           fontSize={["4xl", "4xl", "2xl", "3xl", "4xl"]}
           alignItems="center"
-          color="#141414"
+          color="#2e2e2e"
         >
           Assignments
         </Heading>
@@ -91,12 +111,6 @@ export default function StudentAssignments() {
           mt="7"
         >
           <Heading
-            // fontWeight="normal"
-            // letterSpacing="tight"
-            // fontFamily="Europa-Bold"
-            // fontSize="4xl"
-            // alignItems="center"
-            // color="#e6e6e6"
             mt="5"
             mb="5"
             // mt="100px"
@@ -109,50 +123,30 @@ export default function StudentAssignments() {
             textAlign="left"
             color="#2e2e2e"
           >
-            All Assignments
+            Create an assignment
           </Heading>
-          <Flex
-            onClick={onOpen}
-            gridGap={2}
-            as="a"
-            align="left"
-            w="500px"
-            rounded="md"
-            py={3}
-            px={5}
-            mr="10"
-            // mx={7}
-            mb="5"
-            bgColor="#e4e4e4"
-            flexDirection="column"
-            cursor="pointer"
-          >
-            {/* <Icon as={link.icon} fontSize="3xl" className="active-icon" /> */}
-            <Text className="active" fontSize="xl">
-              Assignment name:
-            </Text>
-            <Text className="active" fontSize="xl">
-              Posted on: {new Date().toLocaleDateString()}
-            </Text>
-            <Button colorScheme="green" variant="solid" size="lg" mt="5">
-              <Text fontSize="lg">View assignment</Text>
-            </Button>
-          </Flex>
+          {/* {console.log("all classes", allclasses)} */}
+          {/* Students list */}
+          <Input
+            placeholder="Enter assignment name"
+            bgColor="#ebebeb"
+            _placeholder={{ opacity: 0.7, color: "#9c9c9c" }}
+            color="#2e2e2e"
+            size="lg"
+          />
 
-          <Modal isCentered isOpen={isOpen} onClose={onClose}>
-            <ModalOverlay />
-            <ModalContent w="90%" bgColor="#212121" color="#e4e4e4">
-              <ModalHeader>Assignment name here</ModalHeader>
-              <ModalBody>
-                <Text>assignment description here</Text>
-              </ModalBody>
-              <ModalFooter>
-                <Button colorScheme="blue" onClick={onClose}>
-                  Cancel
-                </Button>
-              </ModalFooter>
-            </ModalContent>
-          </Modal>
+          <Textarea
+            placeholder="Enter description"
+            bgColor="#ebebeb"
+            _placeholder={{ opacity: 0.7, color: "#9c9c9c" }}
+            color="#2e2e2e"
+            size="lg"
+            mb="7"
+            // size="sm"
+          />
+          <Button colorScheme="green" variant="solid" mt="8" mb="5" size="md">
+            Create Assignment
+          </Button>
         </VStack>
       </Flex>
 

@@ -20,6 +20,7 @@ import UserWebsite from "./pages/userWebsite";
 import Page404 from "./pages/404";
 import Courses from "./pages/student/dashboard/courses";
 import CourseInfo from "./pages/student/classroom/CourseInfo";
+import TeacherAssignments from "./pages/teacher/classroom/assignments";
 // import MyTeacher from "./pages/student/dashboard/joined";
 
 function App() {
@@ -42,17 +43,27 @@ function App() {
           element={<TeacherSchedulePage />}
         />
         <Route
+          path="/teacher/class/:classID/:className/assignments"
+          element={<TeacherAssignments />}
+        />
+        <Route
           path="/teacher/class/:classID/:className/students"
           element={<StudentList />}
         />
         <Route path="/student/classes" element={<StudentClasses />} />
         <Route path="/student/courses" element={<Courses />} />
-        <Route path="/student/class/:classID/info" element={<CourseInfo />} />
+        <Route
+          path="/student/class/:classID/:className/info"
+          element={<CourseInfo />}
+        />
         <Route
           path="/student/class/:classID/:className/assignments"
           element={<StudentAssignments />}
         />
-        <Route path="/student/class/:classID/:className/quiz" element={<StudentQuiz />} />
+        <Route
+          path="/student/class/:classID/:className/quiz"
+          element={<StudentQuiz />}
+        />
         <Route
           path="/student/class/:classID/:className/schedule"
           element={<StudentSchedulePage />}

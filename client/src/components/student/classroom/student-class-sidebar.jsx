@@ -20,14 +20,15 @@ import {
   MdOutlineQuiz,
   MdOutlineQuestionAnswer,
   MdDateRange,
+  MdInfoOutline,
 } from "react-icons/md";
 import ProfileCard from "../../profile-card";
 
 const LinkItems = [
   {
     id: 4,
-    name: "Student Info",
-    icon: MdOutlineQuestionAnswer,
+    name: "Class Info",
+    icon: MdInfoOutline,
     href: "/info",
   },
   {
@@ -73,8 +74,9 @@ export default function StudentClassSidebar(props) {
           <Heading
             mt={50}
             mx={10}
+            pt="2"
             mb="20"
-            fontSize={["4xl", "4xl", "2xl", "3xl", "4xl"]}
+            fontSize="3xl"
             alignItems="center"
             letterSpacing="tight"
             fontFamily="Europa-Bold"
@@ -103,7 +105,9 @@ export default function StudentClassSidebar(props) {
             {/* Link Items */}
 
             {LinkItems.map((link) => (
-              <NavLink to={`/student/class/${classID}/${className}${link.href}`}>
+              <NavLink
+                to={`/student/class/${classID}/${className}${link.href}`}
+              >
                 <Flex
                   id={link.id}
                   gridGap={3}
