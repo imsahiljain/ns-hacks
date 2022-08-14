@@ -24,3 +24,5 @@
 - [x] Able to view/submit the assignments. 
 - [ ] Join scheduled class from website itself
 - [x] Also able to see all other tuition courses by other teachers 
+
+Demo video :- https://youtu.be/I8HyUnBiwhE
