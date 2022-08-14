@@ -82,17 +82,18 @@ export default function Hero() {
               position={"relative"}
               color="#e4e4e4"
             >
-              Lorem ipsum
+              learning now
             </Text>
             <br />
-            <Text color="#5e5e5e" fontSize="5xl" letterSpacing="-3px">
-              breaking barriers.
+            <Text color="#5e5e5e" fontSize="6xl" letterSpacing="-3px">
+              made easy.
             </Text>
           </Heading>
           <Text color="#e4e4e4" fontSize="2xl">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed,
-            quidem. Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-            Sed, quidem. Lorem ipsum dolor sit amet consectetur, adipisicing.
+            learnr is a learning management system that enables teachers to
+            establish their coaching business online, making their website,
+            creating courses, managing projects, arrange meetings with students,
+            and publishing quizzes and assignments for students.
           </Text>
           <Stack
             spacing={{ base: 4, sm: 6 }}

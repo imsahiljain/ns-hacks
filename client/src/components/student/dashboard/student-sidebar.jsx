@@ -1,15 +1,7 @@
 import React from "react";
-import { Flex, Heading, Avatar, Text, Icon, Box } from "@chakra-ui/react";
+import { Flex, Heading, Text, Icon } from "@chakra-ui/react";
 import { NavLink } from "react-router-dom";
-import {
-  MdWeb,
-  MdTask,
-  MdOutlineClass,
-  MdPeopleOutline,
-  MdPerson,
-  MdOutlineVideoCameraFront,
-  MdOutlineBook,
-} from "react-icons/md";
+import { MdOutlineClass, MdOutlineBook } from "react-icons/md";
 import Cookies from "js-cookie";
 import ProfileCard from "../../profile-card";
 
@@ -20,23 +12,11 @@ const LinkItems = [
     href: "/classes",
     icon: MdOutlineClass,
   },
-  // {
-  //   id: 2,
-  //   name: "My Teacher",
-  //   icon: MdPerson,
-  //   href: "/my-teacher",
-  // },
   {
     id: 3,
     name: "More Courses",
     href: "/courses",
     icon: MdOutlineBook,
-  },
-  {
-    id: 5,
-    name: "Meetings",
-    icon: MdOutlineVideoCameraFront,
-    href: "/meetings",
   },
 ];
 
@@ -60,7 +40,7 @@ export default function StudentSidebar(props) {
             letterSpacing="tight"
             fontFamily="Europa-Bold"
           >
-            Teachit
+            learnr.
           </Heading>
           <Text
             fontSize="lg"
@@ -107,28 +87,6 @@ export default function StudentSidebar(props) {
             ))}
           </Flex>
         </Flex>
-
-        {/* Profile */}
-
-        {/* <Flex
-          flexDir="row"
-          alignItems="center"
-          mb={10}
-          mt={5}
-          mx="7"
-          as="a"
-          align="center"
-          w="80%"
-          rounded="md"
-          py={1}
-          px={5}
-          bgColor="#333333"
-        >
-          <Avatar my={2} src="https://bit.ly/dan-abramov" />
-          <Text textAlign="center" fontSize="xl" mx="9">
-            {currUser}
-          </Text>
-        </Flex> */}
         <ProfileCard bg="#333333" />
       </Flex>
     </Flex>

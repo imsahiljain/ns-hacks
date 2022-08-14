@@ -1,6 +1,7 @@
 import React from "react";
-import { Flex, Heading, Text, Icon, Button } from "@chakra-ui/react";
+import { Flex, Heading, Text, Icon, Button, VStack } from "@chakra-ui/react";
 import { MdOutlineLogout } from "react-icons/md";
+import ClassSidebar from "../../../components/teacher/classroom/class-sidebar";
 import Sidebar from "../../../components/teacher/dashboard/sidebar";
 // import JoinMeeting from "../../components/meetings/join";
 import Todo from "../../../components/meetings/create/todo";
@@ -15,14 +16,14 @@ export default function TeacherMeetings() {
     >
       {/* Column 1 */}
 
-      <Sidebar dashFor="teachers" />
+      <ClassSidebar classID="students" />
 
       {/* Column 2 */}
       <Flex
         w="90%"
         p="3%"
         mt={-2}
-        bgColor="#141414"
+        bgColor="#fafafa"
         flexDir="column"
         overflow="auto"
         minH="100vh"
@@ -31,20 +32,28 @@ export default function TeacherMeetings() {
           fontWeight="normal"
           letterSpacing="tight"
           fontFamily="Europa-Bold"
-          fontSize="4xl"
+          fontSize={["4xl", "4xl", "2xl", "3xl", "4xl"]}
           alignItems="center"
-          color="#e6e6e6"
+          color="#2e2e2e"
         >
           Meetings
         </Heading>
+        {/* <VStack
+          borderRadius="lg"
+          w="100%"
+          maxW={{ base: "90vw", sm: "80vw", lg: "50vw", xl: "30vw" }}
+          alignItems="stretch"
+          mt="7"
+        > */}
         <Todo />
+        {/* </VStack> */}
       </Flex>
 
       {/* Column 3 */}
 
       <Flex
         w="16%"
-        bgColor="#141414"
+        bgColor="#fafafa"
         p="3%"
         mt={-2}
         flexDir="column"

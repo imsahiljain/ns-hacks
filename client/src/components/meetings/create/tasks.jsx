@@ -1,9 +1,8 @@
 import React from "react";
-// import UpdateTask from "./UpdateTask";
-import { DeleteTask, DeleteAllTask } from "./DeleteTask";
+import { DeleteTask } from "./DeleteTask";
 import { HStack, VStack, Flex, Text, Link, Heading } from "@chakra-ui/react";
 
-function TaskList({ tasks, updateTask, deleteTask, checkTask }) {
+function TaskList({ tasks, deleteTask }) {
   if (!tasks.length) {
     return <></>;
   }
@@ -22,7 +21,7 @@ function TaskList({ tasks, updateTask, deleteTask, checkTask }) {
           fontFamily="Europa-Bold"
           fontSize="4xl"
           alignItems="center"
-          color="#e6e6e6"
+          color="#2e2e2e"
           mt="3"
           mb="4"
         >
@@ -34,22 +33,6 @@ function TaskList({ tasks, updateTask, deleteTask, checkTask }) {
             opacity={task.check == true ? "0.2" : "1"}
             mb="10px"
           >
-            {/* <Text
-              w="100%"
-              p="8px"
-              borderRadius="lg"
-              borderColor="#242424"
-              borderWidth="2px"
-              as={task.check == true ? "s" : ""}
-              cursor="pointer"
-              fontSize="lg"
-              onClick={() => checkTask(task.id)}
-            >
-              {task.body[0]}
-              {/* {task.body[1]}
-              {task.body[2]} */}
-            {/* </Text> */}
-
             <Link
               href={task.body[2]}
               textDecoration="none"
@@ -65,13 +48,11 @@ function TaskList({ tasks, updateTask, deleteTask, checkTask }) {
                 py={3}
                 px={5}
                 mr="10"
-                // mx={7}
                 mb="5"
-                bgColor="#333333"
-                color="#e4e4e4"
+                bgColor="#e4e4e4"
+                color="#333333"
                 flexDirection="column"
               >
-                {/* <Icon as={link.icon} fontSize="3xl" className="active-icon" /> */}
                 <Text className="active" fontSize="xl">
                   Meeting ID: <b>{task.body[0]}</b>
                 </Text>
@@ -81,18 +62,10 @@ function TaskList({ tasks, updateTask, deleteTask, checkTask }) {
               </Flex>
             </Link>
 
-            <DeleteTask
-              task={task}
-              deleteTask={deleteTask}
-
-              // deleteTaskAll={deleteTaskAll}
-            />
-            {/* <UpdateTask task={task} updateTask={updateTask} /> */}
+            <DeleteTask task={task} deleteTask={deleteTask} />
           </HStack>
         ))}
       </VStack>
-
-      <Flex>{/* <DeleteAllTask deleteTaskAll={deleteTaskAll} /> */}</Flex>
     </>
   );
 }

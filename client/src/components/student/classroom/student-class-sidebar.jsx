@@ -1,24 +1,9 @@
 import { React } from "react";
+import { Flex, Heading, Text, Icon, useToast } from "@chakra-ui/react";
+import { NavLink, useParams } from "react-router-dom";
 import {
-  Flex,
-  Heading,
-  Avatar,
-  Text,
-  Icon,
-  useToast,
-  Box,
-  Button,
-} from "@chakra-ui/react";
-import { NavLink, useParams, useLocation } from "react-router-dom";
-import {
-  MdWeb,
-  MdTask,
-  MdOutlineClass,
-  MdPeopleOutline,
-  MdOutlineVideoCameraFront,
   MdOutlineAssignment,
   MdOutlineQuiz,
-  MdOutlineQuestionAnswer,
   MdDateRange,
   MdInfoOutline,
 } from "react-icons/md";
@@ -43,12 +28,6 @@ const LinkItems = [
     href: "/quiz",
     icon: MdOutlineQuiz,
   },
-  // {
-  //   id: 5,
-  //   name: "Meetings",
-  //   icon: MdOutlineVideoCameraFront,
-  //   href: "/meetings",
-  // },
   {
     id: 6,
     name: "Schedule",
@@ -83,19 +62,6 @@ export default function StudentClassSidebar(props) {
           >
             {className} Class
           </Heading>
-          {/* <Text
-            fontSize="lg"
-            fontFamily="Europa-Reg"
-            mx={10}
-            mb="20"
-            color="#919191"
-            alignItems="center"
-          >
-            Dashboard for{" "}
-            <Flex display="inline-flex" fontWeight="bold">
-              {props.dashFor}
-            </Flex>
-          </Text> */}
           <Flex
             flexDir={["row", "row", "column", "column", "column"]}
             align={["center", "center", "center", "flex-start", "flex-start"]}
@@ -130,30 +96,6 @@ export default function StudentClassSidebar(props) {
             ))}
           </Flex>
         </Flex>
-
-        {/* Profile */}
-        {/* <Flex direction="column">
-          <Flex
-            flexDir="row"
-            alignItems="center"
-            mb={10}
-            mt={5}
-            mx="7"
-            as="a"
-            align="center"
-            w="80%"
-            rounded="md"
-            py={1}
-            px={5}
-            bgColor="#c7c7c7"
-          >
-            <Avatar my={2} src="https://bit.ly/dan-abramov" />
-
-            <Text textAlign="center" fontSize="xl" mx="9">
-              John Doe
-            </Text>
-          </Flex>
-        </Flex> */}
         <ProfileCard bg="#2e2e2e" />
       </Flex>
     </Flex>

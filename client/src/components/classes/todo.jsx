@@ -1,4 +1,4 @@
-import { VStack, useToast, HStack } from "@chakra-ui/react";
+import { VStack, useToast } from "@chakra-ui/react";
 import TaskList from "./tasks";
 import CreateClass from "./create";
 import { useState, useEffect } from "react";
@@ -18,10 +18,6 @@ function ClassLayout() {
       return task.id !== id;
     });
     setAllclasses(newTasks);
-  }
-
-  function deleteTaskAll() {
-    setAllclasses([]);
   }
 
   function checkTask(id) {
@@ -82,7 +78,6 @@ function ClassLayout() {
         allclasses={allclasses}
         updateTask={updateTask}
         deleteTask={deleteTask}
-        // deleteTaskAll={deleteTaskAll}
         checkTask={checkTask}
       />
     </VStack>
