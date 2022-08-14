@@ -1,4 +1,4 @@
-import { Button, Input, useToast } from "@chakra-ui/react";
+import { Button, Input, useToast, Text, Flex } from "@chakra-ui/react";
 import format from "date-fns/format";
 import getDay from "date-fns/getDay";
 import parse from "date-fns/parse";
@@ -70,19 +70,21 @@ function Schedule() {
         mr="10px"
         mt="10"
         mb="5px"
-        w="17%"
-        backgroundColor="#4d4d4d"
-        color="#fff"
-        _hover={{ bgColor: "#4d4d4d" }}
+        w="22%"
+        backgroundColor="#e4e4e4"
+        color="#141414"
+        _hover={{ bgColor: "#e4e4e4" }}
         _active={{
-          bg: "#4d4d4d",
+          bg: "#e4e4e4",
         }}
-        _focus={{ bgColor: "#4d4d4d" }}
+        _focus={{ bgColor: "#e4e4e4" }}
+        _placeholder={{ color: "#6e6e6e" }}
       />
       <style>
         {`.date-picker input {
-          background-color: #4d4d4d;
-            color: #fff !important;
+          background-color: #e4e4e4;
+            color: #141414 !important;
+            _placeholder={{ color: "#6e6e6e" }}
             font-size: 1.1rem;
             padding: 7px;
             padding-left: 17px;
@@ -92,19 +94,38 @@ function Schedule() {
         
       }`}
       </style>
-      <DatePicker
-        wrapperClassName="date-picker"
-        placeholderText="Start Date"
-        selected={newEvent.start}
-        onChange={(start) => setNewEvent({ ...newEvent, start })}
-      />
-      <DatePicker
-        wrapperClassName="date-picker"
-        placeholderText="End Date"
-        selected={newEvent.end}
-        onChange={(end) => setNewEvent({ ...newEvent, end })}
-      />
-      <Button colorScheme="blue" mt="4" onClick={handleAddEvent}>
+      <Flex flexDirection="row" mt="3">
+        <Text color="#2e2e2e" fontSize="xl" mr="5">
+          Start:
+        </Text>
+        <DatePicker
+          wrapperClassName="date-picker"
+          placeholderText="Start Date"
+          selected={newEvent.start}
+          onChange={(start) => setNewEvent({ ...newEvent, start })}
+        />
+      </Flex>
+      <Flex flexDirection="row">
+        <Text color="#2e2e2e" fontSize="xl" mr="8">
+          End:{" "}
+        </Text>
+        <DatePicker
+          wrapperClassName="date-picker"
+          placeholderText="End Date"
+          selected={newEvent.end}
+          onChange={(end) => setNewEvent({ ...newEvent, end })}
+        />
+      </Flex>
+      <Button
+        bg={"blue.500"}
+        color={"white"}
+        _hover={{
+          bg: "blue.600",
+        }}
+        _active={{ bg: "blue.600" }}
+        mt="4"
+        onClick={handleAddEvent}
+      >
         Add Event
       </Button>
       <Calendar

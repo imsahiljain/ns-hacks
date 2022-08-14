@@ -124,6 +124,7 @@ export default function StudentAssignments() {
             // mx={7}
             mb="5"
             bgColor="#e4e4e4"
+            color="#141414"
             flexDirection="column"
             cursor="pointer"
           >
@@ -134,7 +135,17 @@ export default function StudentAssignments() {
             <Text className="active" fontSize="xl">
               Posted on: {new Date().toLocaleDateString()}
             </Text>
-            <Button colorScheme="green" variant="solid" size="lg" mt="5">
+            <Button
+              bg={"green.500"}
+              color={"white"}
+              _hover={{
+                bg: "green.600",
+              }}
+              _active={{ bg: "green.600" }}
+              variant="solid"
+              size="lg"
+              mt="5"
+            >
               <Text fontSize="lg">View assignment</Text>
             </Button>
           </Flex>

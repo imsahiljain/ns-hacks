@@ -37,7 +37,7 @@ export default function Register() {
       registerLastName: registerLastName,
       registerEmail: registerEmail,
       registerPassword: registerPassword,
-      registerType: registerType
+      registerType: registerType,
     })
       .then((res) => {
         toast({
@@ -78,6 +78,9 @@ export default function Register() {
                   <FormLabel color="#efefef">First Name</FormLabel>
                   <Input
                     type="text"
+                    borderColor="#363636"
+                    _hover={{ borderColor: "#363636" }}
+                    _active={{ borderColor: "#363636  " }}
                     className="registerFirstName"
                     color="#efefef"
                     onChange={(e) => {
@@ -91,6 +94,9 @@ export default function Register() {
                   <FormLabel color="#efefef">Last Name</FormLabel>
                   <Input
                     type="text"
+                    borderColor="#363636"
+                    _hover={{ borderColor: "#363636" }}
+                    _active={{ borderColor: "#363636  " }}
                     className="registerLastName"
                     color="#efefef"
                     onChange={(e) => {
@@ -104,6 +110,9 @@ export default function Register() {
               <FormLabel color="#efefef">Email address</FormLabel>
               <Input
                 type="email"
+                borderColor="#363636"
+                _hover={{ borderColor: "#363636" }}
+                _active={{ borderColor: "#363636  " }}
                 className="registerEmail"
                 color="#efefef"
                 onChange={(e) => {
@@ -116,6 +125,9 @@ export default function Register() {
               <InputGroup>
                 <Input
                   type="password"
+                  borderColor="#363636"
+                  _hover={{ borderColor: "#363636" }}
+                  _active={{ borderColor: "#363636  " }}
                   className="registerPassword"
                   color="#efefef"
                   onChange={(e) => {
@@ -128,8 +140,24 @@ export default function Register() {
 
             <RadioGroup value={value}>
               <Stack direction="row">
-              <input type="radio" name="type" value="teacher" onChange={(e) => {setRegisterType(e.target.value)}}/> <FormLabel color="#efefef">Teacher</FormLabel>
-              <input type="radio" name="type" value="student" onChange={(e) => {setRegisterType(e.target.value)}}/> <FormLabel color="#efefef">Student</FormLabel>
+                <input
+                  type="radio"
+                  name="type"
+                  value="teacher"
+                  onChange={(e) => {
+                    setRegisterType(e.target.value);
+                  }}
+                />{" "}
+                <FormLabel color="#efefef">Teacher</FormLabel>
+                <input
+                  type="radio"
+                  name="type"
+                  value="student"
+                  onChange={(e) => {
+                    setRegisterType(e.target.value);
+                  }}
+                />{" "}
+                <FormLabel color="#efefef">Student</FormLabel>
               </Stack>
             </RadioGroup>
 
@@ -138,11 +166,12 @@ export default function Register() {
                 onClick={() => sendAuthentication()}
                 loadingText="Submitting"
                 size="lg"
-                bg={"blue.400"}
+                bg={"blue.500"}
                 color={"white"}
                 _hover={{
-                  bg: "blue.500",
+                  bg: "blue.600",
                 }}
+                _active={{ bg: "blue.600" }}
               >
                 Sign up
               </Button>

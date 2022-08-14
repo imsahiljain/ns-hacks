@@ -63,7 +63,11 @@ export default function TeacherClasses() {
       >
         <Flex alignContent="center">
           <Button
-            colorScheme="gray"
+            bgColor="#262626"
+            // colorScheme="gray"
+            color="#e6e6e6"
+            _focus={{ bgColor: "#363636" }}
+            _hover={{ bgColor: "#363636" }}
             size="lg"
             p="5"
             onClick={() => handleLogout()}

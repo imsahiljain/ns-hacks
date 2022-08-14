@@ -48,7 +48,15 @@ export default function TeacherStudents() {
         overflow="auto"
       >
         <Flex alignContent="center">
-          <Button colorScheme="gray" size="lg" p="5">
+          <Button
+            bgColor="#262626"
+            // colorScheme="gray"
+            color="#e6e6e6"
+            _focus={{ bgColor: "#363636" }}
+            _hover={{ bgColor: "#363636" }}
+            size="lg"
+            p="5"
+          >
             <Icon
               as={MdOutlineLogout}
               fontSize="3xl"

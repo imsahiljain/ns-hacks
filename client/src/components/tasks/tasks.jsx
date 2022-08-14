@@ -30,6 +30,7 @@ function TaskList({ tasks, updateTask, deleteTask, deleteTaskAll, checkTask }) {
               as={task.check == true ? "s" : ""}
               cursor="pointer"
               fontSize="lg"
+              color="#e6e6e6"
               onClick={() => checkTask(task.id)}
             >
               {task.body}

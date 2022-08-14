@@ -110,14 +110,18 @@ function CreateClass({ addTask }) {
       <VStack mt="4" pb="7" w="50%" pr="100px">
         <Input
           h="50px"
-          bgColor="#1d1d1d"
           variant="filled"
           placeholder="Class Name"
           fontSize="lg"
           value={className}
           onChange={(e) => setClassName(e.target.value)}
           // mr="10px"
-          _focus={{ borderColor: "#4a4a4a" }}
+          bgColor="#1d1d1d"
+          color="#e6e6e6"
+          _placeholder={{ color: "#4f4f4f" }}
+          _focus={{ bgColor: "#212121" }}
+          _hover={{ bgColor: "#212121" }}
+          _active={{ bgColor: "#212121" }}
           isRequired
         />
         <Input
@@ -128,7 +132,12 @@ function CreateClass({ addTask }) {
           value={classID}
           onChange={(e) => setClassID(e.target.value)}
           // mr="10px"
-          _focus={{ borderColor: "#4a4a4a" }}
+          bgColor="#1d1d1d"
+          color="#e6e6e6"
+          _placeholder={{ color: "#4f4f4f" }}
+          _focus={{ bgColor: "#212121" }}
+          _hover={{ bgColor: "#212121" }}
+          _active={{ bgColor: "#212121" }}
           isRequired
         />
         {/* <Input
@@ -148,7 +157,12 @@ function CreateClass({ addTask }) {
       <Wrap spacing={4}>
         <WrapItem>
           <Button
-            colorScheme="blue"
+            bg={"blue.500"}
+            color={"white"}
+            _hover={{
+              bg: "blue.600",
+            }}
+            _active={{ bg: "blue.600" }}
             px="8"
             h="44px"
             type="submit"
@@ -161,7 +175,12 @@ function CreateClass({ addTask }) {
         </WrapItem>
         <WrapItem>
           <Button
-            colorScheme="red"
+            bg={"red.500"}
+            color={"white"}
+            _hover={{
+              bg: "red.600",
+            }}
+            _active={{ bg: "red.600" }}
             px="8"
             h="44px"
             alignItems="center"

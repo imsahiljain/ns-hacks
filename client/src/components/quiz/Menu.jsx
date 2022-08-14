@@ -25,7 +25,8 @@ function Menu() {
             // mx={7}
             // mb="5"
             mt="10"
-            bgColor="#404040"
+            bgColor="#e4e4e4"
+            color="#141414"
             flexDirection="column"
             cursor="pointer"
             onClick={() => {

@@ -43,12 +43,12 @@ const LinkItems = [
     href: "/quiz",
     icon: MdOutlineQuiz,
   },
-  {
-    id: 5,
-    name: "Meetings",
-    icon: MdOutlineVideoCameraFront,
-    href: "/meetings",
-  },
+  // {
+  //   id: 5,
+  //   name: "Meetings",
+  //   icon: MdOutlineVideoCameraFront,
+  //   href: "/meetings",
+  // },
   {
     id: 6,
     name: "Schedule",

@@ -77,7 +77,6 @@ function AddTask({ addTask }) {
       <VStack mt="4" mb="10" w="100%" mr="100px" pr="100px">
         <Input
           h="50px"
-          bgColor="#1d1d1d"
           variant="filled"
           placeholder="Enter meeting ID"
           type="number"
@@ -85,7 +84,12 @@ function AddTask({ addTask }) {
           value={meetID}
           onChange={(e) => setmeetID(e.target.value)}
           // mr="10px"
-          _focus={{ borderColor: "#4a4a4a" }}
+          bgColor="#1d1d1d"
+          color="#e6e6e6"
+          _placeholder={{ color: "#4f4f4f" }}
+          _focus={{ bgColor: "#212121" }}
+          _hover={{ bgColor: "#212121" }}
+          _active={{ bgColor: "#212121" }}
           isRequired
         />
         <Input
@@ -96,7 +100,12 @@ function AddTask({ addTask }) {
           value={meetPass}
           onChange={(e) => setmeetPass(e.target.value)}
           // mr="10px"
-          _focus={{ borderColor: "#4a4a4a" }}
+          bgColor="#1d1d1d"
+          color="#e6e6e6"
+          _placeholder={{ color: "#4f4f4f" }}
+          _focus={{ bgColor: "#212121" }}
+          _hover={{ bgColor: "#212121" }}
+          _active={{ bgColor: "#212121" }}
           isRequired
         />
         <Input
@@ -108,12 +117,22 @@ function AddTask({ addTask }) {
           value={meetLink}
           onChange={(e) => setmeetLink(e.target.value)}
           // mr="10px"
-          _focus={{ borderColor: "#4a4a4a" }}
+          bgColor="#1d1d1d"
+          color="#e6e6e6"
+          _placeholder={{ color: "#4f4f4f" }}
+          _focus={{ bgColor: "#212121" }}
+          _hover={{ bgColor: "#212121" }}
+          _active={{ bgColor: "#212121" }}
           isRequired
         />
       </VStack>
       <Button
-        colorScheme="blue"
+        bg={"blue.500"}
+        color={"white"}
+        _hover={{
+          bg: "blue.600",
+        }}
+        _active={{ bg: "blue.600" }}
         px="8"
         h="44px"
         type="submit"
